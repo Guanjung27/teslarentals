@@ -1,28 +1,21 @@
-import React from 'react';
-
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
-import { SignupCard }from './Signup'
-import { Homepage } from './Homepage'
+import SignupCard from "./Signup";
+import Homepage from "./Homepage";
+import LoginCard from "./Login";
 
 
-
-
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 export default function App() {
   return (
-    <div>
-      
-
-      {/* Add routes here👇 */}
+    <div className="App"> 
       <Router>
-        <Switch>
-          <Route path="/home" component= {Homepage} />
-         
-          <Route path="/signup" component={SignupCard} />
-          
-        </Switch>
+        <Routes>
+          <Route path="/" exact element={<Homepage />} />
+          <Route path="/signup" exact element={<SignupCard />} />
+          <Route path="/login" exact element={<LoginCard />} />
+
+        
+        </Routes>
       </Router>
     </div>
-  )
+  );
 }

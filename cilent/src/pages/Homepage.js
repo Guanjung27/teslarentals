@@ -1,55 +1,73 @@
+
+import { Link } from 'react-router-dom';
+
 import {
-    Flex,
-    Container,
-    Heading,
-    Stack,
-    Text,
-    Button,
-    
-   
-  } from '@chakra-ui/react';
-  
-  export function Homepage() {
-    return (
-      <Container maxW={'5xl'}>
-        <Stack
-          textAlign={'center'}
-          align={'center'}
-          spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 28 }}>
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
-            Meeting scheduling{' '}
-            <Text as={'span'} color={'orange.400'}>
-              made easy
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  useBreakpointValue,
+} from '@chakra-ui/react';
+
+export default function Homepage() {
+  return (
+    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+        <Stack spacing={6} w={'full'} maxW={'lg'}>
+          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+            <Text
+              as={'span'}
+              position={'relative'}
+              _after={{
+                content: "''",
+                width: 'full',
+                height: useBreakpointValue({ base: '20%', md: '30%' }),
+                position: 'absolute',
+                bottom: 1,
+                left: 0,
+                bg: 'blue.400',
+                zIndex: -1,
+              }}>
+              Tesla
             </Text>
+            <br />{' '}
+            <Text color={'blue.400'} as={'span'}>
+              MarketPlace
+            </Text>{' '}
           </Heading>
-          <Text color={'gray.500'} maxW={'3xl'}>
-            Never miss a meeting. Never be late for one too. Keep track of your
-            meetings and receive smart reminders in appropriate times. Read your
-            smart “Daily Agenda” every morning.
+          <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
+            Buy and Sell at the tip of your fingers
           </Text>
-          <Stack spacing={6} direction={'row'}>
+          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            <Link to="/signup">
             <Button
               rounded={'full'}
-              px={6}
-              colorScheme={'orange'}
-              bg={'orange.400'}
-              _hover={{ bg: 'orange.500' }}>
-              Get started
+              bg={'blue.400'}
+              color={'white'}
+              _hover={{
+                bg: 'blue.500',
+              }}>
+              Sign Up
             </Button>
-            <Button rounded={'full'} px={6}>
-              Learn more
-            </Button>
+            </Link>
+            <Link to="/login">
+            <Button rounded={'full'}>Login</Button>
+            </Link>
           </Stack>
-          <Flex w={'full'}>
-            
-             
-          </Flex>
         </Stack>
-      </Container>
-    );
-  };
-  
+      </Flex>
+
+      <Flex flex={1}>
+        <Image
+          alt={'Login Image'}
+          objectFit={ 'cover'}
+           src={
+            "https://149494764.v2.pressablecdn.com/wp-content/uploads/2021/07/Tesla-Logo-Hero.jpeg"
+          }
+        />
+      </Flex>
+    </Stack>
+  );
+}
